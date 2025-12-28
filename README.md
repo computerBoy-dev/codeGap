@@ -33,21 +33,6 @@ A powerful **web-based IDE** inspired by VS Code, designed for editing HTML, CSS
 
 ---
 
-## 📂 Folder Structure
-
-```
-codeGap/
-├── index.html
-├── HTMLeditor.html
-├── editor.js
-├── firestoreSync.js
-├── preview.html
-├── firebase-config.json
-└── assets/
-```
-
----
-
 ## 🔒 Auth & Sync
 
 - Firebase Authentication used (login required)
