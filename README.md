@@ -11,7 +11,7 @@
   </p>
 
   <p align="center">
-    <a href="https://github.com/yourusername/codegap/deployments">
+    <a href="https://computerboy-dev.github.io/codeGap/">
       <img src="https://img.shields.io/github/deployments/yourusername/codegap/github-pages?style=for-the-badge&logo=github&label=Deployed%20on%20GitHub%20Pages" alt="Deployment Status" />
     </a>
   </p>
