@@ -69,4 +69,4 @@ Unlike traditional text editors, CodeGap features a **Virtual File System (VFS)*
 * **Client-Side Rendering:** Uses a custom `Blob URL` injection technique to compile HTML, CSS, and JS into a previewable iframe without server-side processing.
 * **Smart Resolution:** Automatically detects relative paths in `<link>` and `<script>` tags and injects the corresponding content from the VFS.
 
-<div align="center"> <h3>Designed & Developed by <a href="YOUR_PORTFOLIO_LINK">Aaryan</a></h3> <p> Built with ❤️ and ☕ for developers. </p> </div>
+<div align="center"> <h3>Designed & Developed by <a href="https://github.com/computerBoy-dev">Aaryan</a></h3> <p> Built with ❤️ and ☕ for developers. </p> </div>
