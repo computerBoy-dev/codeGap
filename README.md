@@ -28,20 +28,6 @@
 
 ---
 
-## 📖 Table of Contents
-- [🚀 Overview](#-overview)
-- [✨ Key Features](#-key-features)
-- [🏗️ System Architecture](#-system-architecture)
-- [🛠️ Tech Stack](#-tech-stack)
-- [💻 Usage Guide](#-usage-guide)
-  - [Terminal Commands](#terminal-commands)
-  - [Keyboard Shortcuts](#keyboard-shortcuts)
-- [🔧 Installation & Setup](#-installation--setup)
-- [🛡️ Security & Performance](#-security--performance)
-- [🤝 Contributing](#-contributing)
-
----
-
 ## 🚀 Overview
 
 **CodeGap** is a sophisticated **Browser-Based Integrated Development Environment (IDE)** inspired by tools like CodePen and Replit. It solves the problem of local environment setup by providing a zero-config, instant-start coding platform accessible from any desktop browser.
