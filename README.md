@@ -69,24 +69,4 @@ Unlike traditional text editors, CodeGap features a **Virtual File System (VFS)*
 * **Client-Side Rendering:** Uses a custom `Blob URL` injection technique to compile HTML, CSS, and JS into a previewable iframe without server-side processing.
 * **Smart Resolution:** Automatically detects relative paths in `<link>` and `<script>` tags and injects the corresponding content from the VFS.
 
----
-
-## 🏗️ System Architecture
-
-CodeGap follows a **Serverless, Event-Driven Architecture**.
-
-### 1. The Core Loop (Editor → VFS → Preview)
-Instead of sending files to a server to be rendered, CodeGap handles compilation locally within the browser:
-1.  **Input:** User types in the Monaco Editor.
-2.  **State Update:** The `files` object graph (VFS) is updated in memory.
-3.  **Compilation:** The `generatePreviewHTML()` function parses the `index.html`.
-4.  **Dependency Injection:** It regex-matches local file references (e.g., `<link href="style.css">`) and replaces them with `<style>` blocks containing the actual CSS code from memory.
-5.  **Output:** A `Blob` is created, and the Object URL is fed into a sandboxed `iframe`.
-
-### 2. Data Persistence Strategy
-```mermaid
-graph LR
-    A[User Types] --> B{Debounce Timer}
-    B -- Wait 800ms --> C[Trigger Save]
-    C --> D[Firebase Firestore]
-    D -- Sync Success --> E[Update UI Status]
+<div align="center"> <h3>Designed & Developed by <a href="YOUR_PORTFOLIO_LINK">Aaryan</a></h3> <p> Built with ❤️ and ☕ for developers. </p> </div>
