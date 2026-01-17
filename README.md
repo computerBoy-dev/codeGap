@@ -1,64 +1,92 @@
 <div align="center">
-  <img src="pages/image/logo.png" alt="CodeGap Logo" width="100" />
   <br />
-  <h1>CodeGap</h1>
-  <p>
-    <strong>A Cloud-Native, Browser-Based IDE for Modern Web Development</strong>
+  <img src="pages/image/logo.png" alt="CodeGap Logo" width="120" />
+  <br />
+  <h1 align="center">CodeGap</h1>
+  <p align="center">
+    <strong>Next-Gen Cloud IDE & Prototyping Engine</strong>
   </p>
-  
-  <p>
-    <a href="https://firebase.google.com/"><img src="https://img.shields.io/badge/Backend-Firebase-orange?style=for-the-badge&logo=firebase" alt="Firebase" /></a>
-    <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Styling-Tailwind_CSS-38bdf8?style=for-the-badge&logo=tailwindcss" alt="Tailwind" /></a>
-    <a href="https://microsoft.github.io/monaco-editor/"><img src="https://img.shields.io/badge/Editor_Engine-Monaco-blue?style=for-the-badge&logo=visualstudiocode" alt="Monaco" /></a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://img.shields.io/badge/Language-Vanilla_JS-yellow?style=for-the-badge&logo=javascript" alt="JavaScript" /></a>
+  <p align="center">
+    Build, Edit, and Run HTML/CSS/JS projects directly in the browser with real-time cloud synchronization.
   </p>
 
-  <p>
-    <a href="#features">Features</a> •
-    <a href="#architecture">Architecture</a> •
-    <a href="#getting-started">Getting Started</a> •
-    <a href="#demo">Live Demo</a>
+  <p align="center">
+    <a href="https://github.com/yourusername/codegap/deployments">
+      <img src="https://img.shields.io/github/deployments/yourusername/codegap/github-pages?style=for-the-badge&logo=github&label=Deployed%20on%20GitHub%20Pages" alt="Deployment Status" />
+    </a>
   </p>
+  
+  <p align="center">
+    <img src="https://img.shields.io/badge/Architecture-Serverless-blueviolet?style=for-the-badge" />
+    <img src="https://img.shields.io/badge/Editor-Monaco_Engine-1e1e1e?style=for-the-badge&logo=visualstudiocode" />
+    <img src="https://img.shields.io/badge/Database-Firestore-orange?style=for-the-badge&logo=firebase" />
+    <img src="https://img.shields.io/badge/Styling-Tailwind_CSS-38bdf8?style=for-the-badge&logo=tailwindcss" />
+  </p>
+
+  <br />
 </div>
+
+---
+
+## 📖 Table of Contents
+- [🚀 Overview](#-overview)
+- [✨ Key Features](#-key-features)
+- [🏗️ System Architecture](#-system-architecture)
+- [🛠️ Tech Stack](#-tech-stack)
+- [💻 Usage Guide](#-usage-guide)
+  - [Terminal Commands](#terminal-commands)
+  - [Keyboard Shortcuts](#keyboard-shortcuts)
+- [🔧 Installation & Setup](#-installation--setup)
+- [🛡️ Security & Performance](#-security--performance)
+- [🤝 Contributing](#-contributing)
 
 ---
 
 ## 🚀 Overview
 
-**CodeGap** is a sophisticated, browser-based Integrated Development Environment (IDE) designed to replicate the desktop coding experience in the cloud. Built with a focus on **performance** and **real-time synchronization**, it allows developers to write, edit, and preview HTML/CSS/JS projects instantly without any local setup.
+**CodeGap** is a sophisticated **Browser-Based Integrated Development Environment (IDE)** inspired by tools like CodePen and Replit. It solves the problem of local environment setup by providing a zero-config, instant-start coding platform accessible from any desktop browser.
 
-Unlike simple text areas, CodeGap integrates the **Monaco Editor** (the core of VS Code) to provide Intellisense, syntax highlighting, and code formatting. It features a custom **Virtual File System (VFS)** and a simulated **Terminal**, making it a robust tool for rapid prototyping.
-
-## ✨ Key Features
-
-### 🛠️ Core Engineering
-* **Monaco Editor Integration:** Full-featured code editing experience with syntax highlighting, auto-completion, and minimap support.
-* **Virtual File System (VFS):** A custom-engineered in-memory file system supporting file/folder creation, deletion, and renaming (`CRUD` operations) purely on the client side.
-* **Real-Time Cloud Sync:** Leveraging **Firebase Firestore**, every keystroke and file change is debounced and synchronized to the cloud, ensuring work is never lost.
-* **Instant Live Preview:** Implements a unique **Blob URL injection engine** that compiles HTML, CSS, and JS in real-time within a sandboxed `iframe`, eliminating the need for server-side rendering.
-
-### 🖥️ User Experience (UX)
-* **Integrated Terminal:** A simulated command-line interface (CLI) supporting Unix-like commands (`ls`, `mkdir`, `touch`, `rm`, `cat`) to interact with the project structure.
-* **Authentication System:** Secure login via **Google OAuth** and **Passwordless Email Links** using Firebase Auth.
-* **Project Management:** Dashboard to view project history, track "Last Updated" timestamps, and manage multiple projects.
-* **Export Capability:** One-click project export functionality that bundles the virtual file structure into a downloadable **ZIP archive** using `JSZip`.
+Unlike traditional text editors, CodeGap features a **Virtual File System (VFS)** that runs entirely in the client's memory, allowing users to create complex folder structures, manage files, and execute terminal commands without needing a backend server for file management. All progress is seamlessly synced to **Firebase Firestore**, ensuring continuity across sessions.
 
 ---
 
-## 🏗️ Technical Architecture
+## ✨ Key Features
 
-CodeGap operates on a **Serverless Architecture**, relying heavily on client-side logic for performance.
+### 👨‍💻 Professional Coding Interface
+* **Monaco Editor Integration:** Powered by the same engine as VS Code, featuring syntax highlighting, IntelliSense, code folding, and minimaps.
+* **Desktop-First UX:** Optimized for large screens with draggable panels, resizable terminal, and split-screen layouts.
 
-### 1. The Compilation Engine
-Instead of sending code to a server to be rendered, CodeGap handles compilation locally:
-> The engine parses the `index.html`, identifies linked CSS/JS files within the Virtual File System, and injects their content dynamically into the DOM. This bundle is converted into a `Blob` object and served to the preview iframe.
+### 📂 Virtual File System (VFS)
+* **In-Memory Management:** A custom JavaScript-based file system that supports `CRUD` operations (Create, Read, Update, Delete) instantly.
+* **Terminal Simulation:** A built-in CLI that interacts with the VFS using Unix-like commands (`ls`, `mkdir`, `touch`, `rm`).
 
-### 2. The Virtual Terminal
-The terminal is not a connection to a backend shell but a JavaScript emulation that interacts with the `files` object graph:
-```javascript
-// Example Logic
-function runCommand(cmd) {
-  if (cmd === "ls") return Object.keys(files);
-  if (cmd.startsWith("mkdir")) createVirtualFolder(args);
-  // ...
-}
+### ☁️ Cloud & Synchronization
+* **Real-Time Sync:** Leveraging Firestore's `onSnapshot` listeners to sync project state across devices.
+* **Debounced Saving:** Implements a smart save strategy (800ms debounce) to minimize database write costs while ensuring data integrity.
+* **Auto-Recovery:** Projects are automatically loaded from the cloud upon login.
+
+### ⚡ Instant Compilation Engine
+* **Client-Side Rendering:** Uses a custom `Blob URL` injection technique to compile HTML, CSS, and JS into a previewable iframe without server-side processing.
+* **Smart Resolution:** Automatically detects relative paths in `<link>` and `<script>` tags and injects the corresponding content from the VFS.
+
+---
+
+## 🏗️ System Architecture
+
+CodeGap follows a **Serverless, Event-Driven Architecture**.
+
+### 1. The Core Loop (Editor → VFS → Preview)
+Instead of sending files to a server to be rendered, CodeGap handles compilation locally within the browser:
+1.  **Input:** User types in the Monaco Editor.
+2.  **State Update:** The `files` object graph (VFS) is updated in memory.
+3.  **Compilation:** The `generatePreviewHTML()` function parses the `index.html`.
+4.  **Dependency Injection:** It regex-matches local file references (e.g., `<link href="style.css">`) and replaces them with `<style>` blocks containing the actual CSS code from memory.
+5.  **Output:** A `Blob` is created, and the Object URL is fed into a sandboxed `iframe`.
+
+### 2. Data Persistence Strategy
+```mermaid
+graph LR
+    A[User Types] --> B{Debounce Timer}
+    B -- Wait 800ms --> C[Trigger Save]
+    C --> D[Firebase Firestore]
+    D -- Sync Success --> E[Update UI Status]
